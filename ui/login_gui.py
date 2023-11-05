@@ -187,6 +187,10 @@ def get_password_text():
     return password_textbox.get()
 
 
+def get_submit_button():
+    return submit_button
+
+
 window.resizable(False, False)
 window.title("Log In")
 window.mainloop()
