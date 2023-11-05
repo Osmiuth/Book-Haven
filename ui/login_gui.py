@@ -44,8 +44,10 @@ canvas.create_rectangle(
     fill="#1C1D21",
     outline="")
 
+# Button Design Parameter
 submit_button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
+# Button Initialization
 submit_button = Button(
     image=submit_button_image_1,
     borderwidth=0,
@@ -53,7 +55,6 @@ submit_button = Button(
     command=lambda: print("button_1 clicked"),
     relief="flat"
 )
-
 submit_button.place(
     x=119.0,
     y=494.0,
@@ -61,6 +62,7 @@ submit_button.place(
     height=48.0
 )
 
+# Text "Login" Design Parameter
 canvas.create_text(
     119.0,
     194.0,
@@ -69,7 +71,7 @@ canvas.create_text(
     fill="#FFFFFF",
     font=("Poppins Bold", 48 * -1)
 )
-
+#
 canvas.create_text(
     119.0,
     278.0,
@@ -176,5 +178,13 @@ canvas.create_rectangle(
     fill="#FFFFFF",
     outline="")
 
+
+def get_username_text():
+    return username_textbox.get()
+
+
+
+
 window.resizable(False, False)
 window.title("Log In")
+window.mainloop()
