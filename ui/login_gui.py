@@ -183,6 +183,8 @@ def get_username_text():
     return username_textbox.get()
 
 
+def get_password_text():
+    return password_textbox.get()
 
 
 window.resizable(False, False)
