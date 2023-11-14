@@ -1,19 +1,9 @@
 from pathlib import Path
-
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import ui.uiManager as uiManager
 
 
-def on_entry_focus_in(textbox, placeholder):
-    if textbox.get() == placeholder:
-        textbox.delete(0, "end")
-
-
-def on_entry_focus_out(textbox, placeholder):
-    if textbox.get() == "":
-        textbox.insert(0, placeholder)
-
-
-ASSETS_PATH = Path(r"assets/frame0")
+ASSETS_PATH = Path(r"assets/login")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -101,8 +91,8 @@ username_textbox.place(
     height=35.0
 )
 username_textbox.insert(0, "Username")
-username_textbox.bind("<FocusIn>", lambda x: on_entry_focus_in(username_textbox, "Username"))
-username_textbox.bind("<FocusOut>", lambda x: on_entry_focus_out(username_textbox, "Username"))
+username_textbox.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(username_textbox, "Username"))
+username_textbox.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(username_textbox, "Username"))
 
 password_textbox_image = PhotoImage(
     file=relative_to_assets("entry_1.png"))
@@ -124,8 +114,8 @@ password_textbox.place(
     height=35.0
 )
 password_textbox.insert(0, "Password")
-password_textbox.bind("<FocusIn>", lambda x: on_entry_focus_in(password_textbox, "Password"))
-password_textbox.bind("<FocusOut>", lambda x: on_entry_focus_out(password_textbox, "Password"))
+password_textbox.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(password_textbox, "Password"))
+password_textbox.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(password_textbox, "Password"))
 
 canvas.create_text(
     633.0,
@@ -210,7 +200,7 @@ def error_message(msg):
     :return: None
     """
     popup = Tk()
-    popup.wm_title("!")
+    popup.wm_title("Error!")
     popup.geometry("300x100")
     popup.configure(bg="#925FE2")
     label = Text(popup, text=msg, bg="#925FE2", fg="white", font=("Poppins Medium", 16 * -1))
