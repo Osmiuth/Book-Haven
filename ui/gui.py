@@ -52,28 +52,28 @@ canvas = Canvas(
 )
 
 canvas.place(x = 0, y = 0)
-image_image_1 = PhotoImage(
+side_board_image = PhotoImage(
     file=relative_to_assets("image_1.png"))
 image_1 = canvas.create_image(
     95.84365844726562,
     332.84375,
-    image=image_image_1
+    image=side_board_image
 )
 
-image_image_2 = PhotoImage(
+logout_image_set_1 = PhotoImage(
     file=relative_to_assets("image_2.png"))
 image_2 = canvas.create_image(
     57.06329345703125,
     606.4606323242188,
-    image=image_image_2
+    image=logout_image_set_1
 )
 
-image_image_3 = PhotoImage(
+logout_image_set_2 = PhotoImage(
     file=relative_to_assets("image_3.png"))
 image_3 = canvas.create_image(
     51.5494384765625,
     606.5604858398438,
-    image=image_image_3
+    image=logout_image_set_2
 )
 
 canvas.create_text(
@@ -94,12 +94,12 @@ canvas.create_text(
     font=("Poppins Regular", 10 * -1)
 )
 
-image_image_4 = PhotoImage(
+edit_profile_image = PhotoImage(
     file=relative_to_assets("image_4.png"))
 image_4 = canvas.create_image(
     64.302490234375,
     275.3021240234375,
-    image=image_image_4
+    image=edit_profile_image
 )
 
 canvas.create_text(
@@ -111,20 +111,20 @@ canvas.create_text(
     font=("Poppins Regular", 10 * -1)
 )
 
-image_image_5 = PhotoImage(
+dashboard_image = PhotoImage(
     file=relative_to_assets("image_5.png"))
 image_5 = canvas.create_image(
     61.0,
     175.0,
-    image=image_image_5
+    image=dashboard_image
 )
 
-image_image_6 = PhotoImage(
+book_management_image = PhotoImage(
     file=relative_to_assets("image_6.png"))
 image_6 = canvas.create_image(
     45.0,
     223.486328125,
-    image=image_image_6
+    image=book_management_image
 )
 
 canvas.create_text(
@@ -136,28 +136,28 @@ canvas.create_text(
     font=("Poppins SemiBold", 10 * -1)
 )
 
-image_image_7 = PhotoImage(
+notification_image = PhotoImage(
     file=relative_to_assets("image_7.png"))
 image_7 = canvas.create_image(
     908.4921875,
     27.84375,
-    image=image_image_7
+    image=notification_image
 )
 
-image_image_8 = PhotoImage(
+header_image = PhotoImage(
     file=relative_to_assets("image_8.png"))
 image_8 = canvas.create_image(
     561.0,
     117.00003051757812,
-    image=image_image_8
+    image=header_image
 )
 
-image_image_9 = PhotoImage(
+graduation_image = PhotoImage(
     file=relative_to_assets("image_9.png"))
 image_9 = canvas.create_image(
     658.0,
     115.0,
-    image=image_image_9
+    image=graduation_image
 )
 
 canvas.create_text(
@@ -178,12 +178,12 @@ canvas.create_text(
     font=("Poppins SemiBold", 20 * -1)
 )
 
-image_image_10 = PhotoImage(
+backpack_image = PhotoImage(
     file=relative_to_assets("image_10.png"))
 image_10 = canvas.create_image(
     791.2198486328125,
     135.65042114257812,
-    image=image_image_10
+    image=backpack_image
 )
 
 canvas.create_text(
@@ -195,7 +195,7 @@ canvas.create_text(
     font=("Poppins SemiBold", 14 * -1)
 )
 
-my_rectangle = round_rectangle(
+bookListCanvas = round_rectangle(
     204.0,
     241.0,
     917.0,
@@ -205,28 +205,28 @@ my_rectangle = round_rectangle(
     width=3,
     outline="#925fe2")
 
-entry_image_1 = PhotoImage(
+search_box_image = PhotoImage(
     file=relative_to_assets("entry_1.png"))
-entry_bg_1 = canvas.create_image(
+search_box_bg = canvas.create_image(
     776.5,
     211.0,
-    image=entry_image_1
+    image=search_box_image
 )
-entry_1 = Entry(
+search_box = Entry(
     bd=0,
     bg="#F2F2F2",
     fg="#000716",
     highlightthickness=0
 )
-entry_1.place(
+search_box.place(
     x=645.0,
     y=198.0,
     width=263.0,
     height=24.0
 )
-entry_1.insert(0, "Search Books")
-entry_1.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(entry_1, "Search Books"))
-entry_1.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(entry_1, "Search Books"))
+search_box.insert(0, "Search Books")
+search_box.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(search_box, "Search Books"))
+search_box.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(search_box, "Search Books"))
 
 window.resizable(False, False)
 window.mainloop()
