@@ -192,7 +192,7 @@ def dashboard_gui_start(root):
         font=("Poppins SemiBold", 14 * -1)
     )
 
-    bookListCanvas = round_rectangle(
+    book_list_canvas = round_rectangle(
         204.0,
         241.0,
         917.0,
@@ -203,29 +203,29 @@ def dashboard_gui_start(root):
         width=3,
         outline="#925fe2")
 
-    search_box_image = PhotoImage(
+    search_entry_image = PhotoImage(
         file=relative_to_assets("entry_1.png"))
-    search_box_bg = canvas.create_image(
+    search_entry_bg = canvas.create_image(
         776.5,
         211.0,
-        image=search_box_image
+        image=search_entry_image
     )
-    search_box = Entry(
+    search_entry = Entry(
         dashboard_gui,
         bd=0,
         bg="#F2F2F2",
         fg="#000716",
         highlightthickness=0
     )
-    search_box.place(
+    search_entry.place(
         x=645.0,
         y=198.0,
         width=263.0,
         height=24.0
     )
-    search_box.insert(0, "Search Books")
-    search_box.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(search_box, "Search Books"))
-    search_box.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(search_box, "Search Books"))
+    search_entry.insert(0, "Search Books")
+    search_entry.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(search_entry, "Search Books"))
+    search_entry.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(search_entry, "Search Books"))
 
     dashboard_gui.side_board_image = side_board_image
     dashboard_gui.logout_image_set_1 = logout_image_set_1
@@ -237,9 +237,9 @@ def dashboard_gui_start(root):
     dashboard_gui.header_image = header_image
     dashboard_gui.graduation_image = graduation_image
     dashboard_gui.backpack_image = backpack_image
-    dashboard_gui.search_box_image = search_box_image
+    dashboard_gui.search_box_image = search_entry_image
 
-    dashboard_gui.bookListCanvas = bookListCanvas
-    dashboard_gui.search_box = search_box
+    dashboard_gui.book_list_canvas = book_list_canvas
+    dashboard_gui.search_entry = search_entry
 
     return dashboard_gui
