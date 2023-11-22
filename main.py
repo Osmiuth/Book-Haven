@@ -1,5 +1,6 @@
 from tkinter import Tk, Text, Button
 import ui.loginGUI as loginGUI
+import ui.dashboardGUI as dashboardGUI
 
 root = Tk()
 root.geometry("937x667")
@@ -9,9 +10,15 @@ root.resizable(False, False)
 current_frame = None
 
 login_page = loginGUI.login_gui_start(root)
+dashboard_page = dashboardGUI.dashboard_gui_start(root)
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
+
+search_entry = dashboard_page.search_entry
+
+book_list_canvas = dashboard_page.book_list_canvas
+
 login_submit_button = login_page.submit_button
 
 
