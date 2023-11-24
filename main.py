@@ -1,6 +1,7 @@
-from tkinter import Tk, Text, Button
+from tkinter import Button, Tk, Text
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
+import loginFunc
 
 root = Tk()
 root.geometry("937x667")
@@ -16,6 +17,8 @@ username_entry = login_page.username_entry
 password_entry = login_page.password_entry
 
 search_entry = dashboard_page.search_entry
+
+submit_button = login_page.submit_button
 
 book_list_canvas = dashboard_page.book_list_canvas
 
@@ -47,6 +50,8 @@ def error_message(msg):
     B1.pack()
     popup.mainloop()
 
+
+submit_button.configure(command=lambda: loginFunc.verify_login(username_entry.get(), password_entry.get()))
 
 show_frame(login_page)
 root.mainloop()

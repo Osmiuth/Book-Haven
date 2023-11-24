@@ -48,7 +48,7 @@ def dashboard_gui_start(root):
         relief = "ridge"
     )
 
-    canvas.place(x = 0, y = 0)
+    canvas.pack(fill="both", expand=True)
     side_board_image = PhotoImage(
         file=relative_to_assets("image_1.png"))
     image_1 = canvas.create_image(
@@ -198,7 +198,6 @@ def dashboard_gui_start(root):
         917.0,
         646.0,
         radius=20,
-        master=dashboard_gui,
         fill="#FFFFFF",
         width=3,
         outline="#925fe2")
