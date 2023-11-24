@@ -1,6 +1,7 @@
 from tkinter import Button, Tk, Text
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
+import ui.accManageGUI as accManageGUI
 import loginFunc
 import ctypes
 
@@ -11,6 +12,7 @@ root.resizable(False, False)
 
 login_page = loginGUI.login_gui_start(root)
 dashboard_page = dashboardGUI.dashboard_gui_start(root)
+acc_management_page = accManageGUI.acc_management_gui_start(root)
 
 current_frame = login_page
 
