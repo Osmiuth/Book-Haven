@@ -1,5 +1,5 @@
 from pathlib import Path
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Frame
+from tkinter import Canvas, Entry, PhotoImage, Frame
 import ui.uiManager as uiManager
 
 
