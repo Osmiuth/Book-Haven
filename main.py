@@ -8,8 +8,9 @@ root = Tk()
 root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
-dashboard_page = dashboardGUI.dashboard_gui_start(root)
+
 login_page = loginGUI.login_gui_start(root)
+dashboard_page = dashboardGUI.dashboard_gui_start(root)
 
 current_frame = login_page
 
@@ -34,25 +35,8 @@ def show_frame(frame_to_show):
     frame_to_show.pack(fill="both", expand=True)
 
 
-def error_message(msg):
-    """
-    error_message creates a popup window with the error message msg
-    :param msg: the message to be displayed
-    :return: None
-    """
-    popup = Tk()
-    popup.wm_title("Error!")
-    popup.geometry("300x100")
-    popup.configure(bg="#925FE2")
-    label = Text(popup, text=msg, bg="#925FE2", fg="white", font=("Poppins Medium", 16 * -1))
-    label.pack(side="top", fill="x", pady=10)
-    B1 = Button(popup, text="Okay", bg="#1C1D21", fg="white", font=("Poppins Medium", 16 * -1), command=popup.destroy)
-    B1.pack()
-    popup.mainloop()
-
-
 def on_button_click():
-    result = False;
+    result = False
     result = loginFunc.verify_login(username_entry.get(), password_entry.get())
     if result:
         print("works")
