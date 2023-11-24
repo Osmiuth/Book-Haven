@@ -2,16 +2,16 @@ from tkinter import Button, Tk, Text
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import loginFunc
+import ctypes
 
 root = Tk()
 root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
-
-current_frame = None
-
-login_page = loginGUI.login_gui_start(root)
 dashboard_page = dashboardGUI.dashboard_gui_start(root)
+login_page = loginGUI.login_gui_start(root)
+
+current_frame = login_page
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
@@ -51,7 +51,16 @@ def error_message(msg):
     popup.mainloop()
 
 
-submit_button.configure(command=lambda: loginFunc.verify_login(username_entry.get(), password_entry.get()))
+def on_button_click():
+    result = False;
+    result = loginFunc.verify_login(username_entry.get(), password_entry.get())
+    if result:
+        print("works")
+        show_frame(dashboard_page)
+    else:
+        ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
 
-show_frame(login_page)
+
+submit_button.configure(command=lambda: on_button_click())
+
 root.mainloop()
