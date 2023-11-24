@@ -24,7 +24,7 @@ def login_gui_start(root):
         relief = "ridge"
     )
 
-    canvas.pack(fill="both", expand=True)
+    canvas.pack()
     canvas.create_rectangle(
         0.0,
         0.0,
