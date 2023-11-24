@@ -1,7 +1,7 @@
 from pathlib import Path
 from tkinter import Canvas, Text, Button, PhotoImage, Frame
 
-ASSETS_PATH = Path(r"assets/accManage")
+ASSETS_PATH = Path(r"ui/assets/accManage")
 
 
 def relative_to_assets(path: str) -> Path:
