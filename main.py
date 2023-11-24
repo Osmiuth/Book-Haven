@@ -2,6 +2,7 @@ from tkinter import Button, Tk, Text
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
+import ui.bookManageGUI as bookManageGUI
 import loginFunc
 import ctypes
 
@@ -11,10 +12,9 @@ root.configure(bg="red")
 root.resizable(False, False)
 
 login_page = loginGUI.login_gui_start(root)
-dashboard_page = dashboardGUI.dashboard_gui_start(root)
+book_manage_page = bookManageGUI.book_manage_gui_start(root)
 acc_management_page = accManageGUI.acc_management_gui_start(root)
-
-current_frame = login_page
+dashboard_page = dashboardGUI.dashboard_gui_start(root)
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
@@ -49,4 +49,5 @@ def on_button_click():
 
 submit_button.configure(command=lambda: on_button_click())
 
+show_frame(login_page)
 root.mainloop()

@@ -193,21 +193,21 @@ def acc_management_gui_start(root):
         font=("Poppins SemiBold", 10 * -1)
     )
 
-    new_password_entry_image = PhotoImage(
+    new_username_entry_image = PhotoImage(
         file=relative_to_assets("entry_1.png"))
-    new_password_entry_bg = canvas.create_image(
+    new_username_entry_bg = canvas.create_image(
         445.0,
         359.0,
-        image=new_password_entry_image
+        image=new_username_entry_image
     )
-    new_password_entry = Text(
+    new_username_entry = Text(
         acc_management_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
     )
-    new_password_entry.place(
+    new_username_entry.place(
         x=344.0,
         y=340.0,
         width=202.0,
@@ -235,21 +235,21 @@ def acc_management_gui_start(root):
         height=22.0
     )
 
-    new_username_entry_image = PhotoImage(
+    new_password_entry_image = PhotoImage(
         file=relative_to_assets("entry_3.png"))
-    new_username_entry_bg = canvas.create_image(
+    new_password_entry_bg = canvas.create_image(
         801.0,
         359.0,
-        image=new_username_entry_image
+        image=new_password_entry_image
     )
-    new_username_entry = Text(
+    new_password_entry = Text(
         acc_management_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
         highlightthickness=0
     )
-    new_username_entry.place(
+    new_password_entry.place(
         x=718.0,
         y=342.0,
         width=166.0,
