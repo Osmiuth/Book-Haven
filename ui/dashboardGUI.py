@@ -14,30 +14,6 @@ def dashboard_gui_start(root):
     dashboard_gui = Frame(root)
     dashboard_gui.pack(fill="both", expand=True)
 
-    def round_rectangle(x1, y1, x2, y2, radius=25, **kwargs):
-        points = [x1 + radius, y1,
-                  x1 + radius, y1,
-                  x2 - radius, y1,
-                  x2 - radius, y1,
-                  x2, y1,
-                  x2, y1 + radius,
-                  x2, y1 + radius,
-                  x2, y2 - radius,
-                  x2, y2 - radius,
-                  x2, y2,
-                  x2 - radius, y2,
-                  x2 - radius, y2,
-                  x1 + radius, y2,
-                  x1 + radius, y2,
-                  x1, y2,
-                  x1, y2 - radius,
-                  x1, y2 - radius,
-                  x1, y1 + radius,
-                  x1, y1 + radius,
-                  x1, y1]
-
-        return canvas.create_polygon(points, **kwargs, smooth=True)
-
     canvas = Canvas(
         dashboard_gui,
         bg = "#FFFFFF",
@@ -48,7 +24,7 @@ def dashboard_gui_start(root):
         relief = "ridge"
     )
 
-    canvas.pack(fill="both", expand=True)
+    canvas.pack()
     side_board_image = PhotoImage(
         file=relative_to_assets("image_1.png"))
     image_1 = canvas.create_image(
@@ -192,7 +168,8 @@ def dashboard_gui_start(root):
         font=("Poppins SemiBold", 14 * -1)
     )
 
-    book_list_canvas = round_rectangle(
+    book_list_canvas = uiManager.round_rectangle(
+        canvas,
         204.0,
         241.0,
         917.0,
