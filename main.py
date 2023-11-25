@@ -27,7 +27,6 @@ book_list_canvas = dashboard_page.book_list_canvas
 
 login_submit_button = login_page.submit_button
 
-
 def show_frame(frame_to_show):
     global current_frame
     if current_frame:
@@ -38,13 +37,13 @@ def show_frame(frame_to_show):
 
 
 def on_button_click():
-    global user_id
+    global user_ID
     result = loginFunc.verify_login(username_entry.get(), password_entry.get())
     print(result)
     if result:
-        user_id = loginFunc.verify_login(username_entry.get(), password_entry.get())
+        user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
         print("works")
-        print(user_id)
+        print(user_ID)
         show_frame(dashboard_page)
     else:
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
