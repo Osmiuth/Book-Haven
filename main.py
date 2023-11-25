@@ -54,5 +54,4 @@ submit_button.configure(command=lambda: on_button_click())
 
 
 
-
 root.mainloop()
