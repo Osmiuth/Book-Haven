@@ -142,30 +142,42 @@ def acc_management_gui_start(root):
         font=("Poppins Regular", 10 * -1)
     )
 
-    canvas.create_text(
-        58.156341552734375,
-        215.15625,
-        anchor="nw",
-        text="Book Management",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+    add_books_button = Button(
+        acc_management_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
+        text="Add Books",
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    add_books_button.place(
+        x=75,
+        y=215.15625,
     )
 
     image_image_7 = PhotoImage(
         file=relative_to_assets("image_7.png"))
     image_7 = canvas.create_image(
-        62.458831787109375,
+        59,
         275.4583740234375,
         image=image_image_7
     )
 
-    canvas.create_text(
-        78.60556030273438,
-        268.15625,
-        anchor="nw",
+    edit_user_profile_button = Button(
+        acc_management_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#FFFFFF",
         text="Edit Profile",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    edit_user_profile_button.place(
+        x=75,
+        y=268.15625,
     )
 
     image_image_8 = PhotoImage(
@@ -179,18 +191,24 @@ def acc_management_gui_start(root):
     image_image_9 = PhotoImage(
         file=relative_to_assets("image_9.png"))
     image_9 = canvas.create_image(
-        43.156341552734375,
+        59,
         223.642578125,
         image=image_image_9
     )
 
-    canvas.create_text(
-        75.60556030273438,
-        166.15625,
-        anchor="nw",
+    dashboard_button = Button(
+        acc_management_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Dashboard",
-        fill="#FFFFFF",
         font=("Poppins SemiBold", 10 * -1)
+    )
+    dashboard_button.place(
+        x=75.60556030273438,
+        y=166.15625,
     )
 
     new_username_entry_image = PhotoImage(
@@ -275,5 +293,9 @@ def acc_management_gui_start(root):
     acc_management_gui.new_username_entry = new_username_entry
     acc_management_gui.name = name
     acc_management_gui.submit_button = submit_button
+
+    acc_management_gui.dashboard_button = dashboard_button
+    acc_management_gui.add_books_button = add_books_button
+    acc_management_gui.edit_user_profile_button = edit_user_profile_button
 
     return acc_management_gui

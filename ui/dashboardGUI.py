@@ -1,5 +1,5 @@
 from pathlib import Path
-from tkinter import Canvas, Entry, PhotoImage, Frame
+from tkinter import Canvas, Entry, PhotoImage, Frame, Button
 import ui.uiManager as uiManager
 
 
@@ -58,30 +58,42 @@ def dashboard_gui_start(root):
         font=("Poppins Regular", 10 * -1)
     )
 
-    canvas.create_text(
-        60.0,
-        215.0,
-        anchor="nw",
-        text="Book Management",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+    add_books_button = Button(
+        dashboard_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
+        text="Add Books",
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    add_books_button.place(
+        x=75,
+        y=215.15625,
     )
 
     edit_profile_image = PhotoImage(
         file=relative_to_assets("image_4.png"))
     image_4 = canvas.create_image(
-        64.302490234375,
+        59,
         275.3021240234375,
         image=edit_profile_image
     )
 
-    canvas.create_text(
-        80.44921875,
-        268.0,
-        anchor="nw",
+    edit_user_profile_button = Button(
+        dashboard_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Edit Profile",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    edit_user_profile_button.place(
+        x=75,
+        y=268.15625,
     )
 
     dashboard_image = PhotoImage(
@@ -95,18 +107,24 @@ def dashboard_gui_start(root):
     book_management_image = PhotoImage(
         file=relative_to_assets("image_6.png"))
     image_6 = canvas.create_image(
-        45.0,
+        59,
         223.486328125,
         image=book_management_image
     )
 
-    canvas.create_text(
-        77.44921875,
-        166.0,
-        anchor="nw",
+    dashboard_button = Button(
+        dashboard_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#FFFFFF",
         text="Dashboard",
-        fill="#FFFFFF",
         font=("Poppins SemiBold", 10 * -1)
+    )
+    dashboard_button.place(
+        x=75.60556030273438,
+        y=166.15625,
     )
 
     notification_image = PhotoImage(
@@ -217,5 +235,9 @@ def dashboard_gui_start(root):
 
     dashboard_gui.book_list_canvas = book_list_canvas
     dashboard_gui.search_entry = search_entry
+
+    dashboard_gui.dashboard_button = dashboard_button
+    dashboard_gui.add_books_button = add_books_button
+    dashboard_gui.edit_user_profile_button = edit_user_profile_button
 
     return dashboard_gui

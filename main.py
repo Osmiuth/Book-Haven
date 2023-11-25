@@ -2,7 +2,7 @@ from tkinter import Button, Tk, Text
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
-import ui.bookManageGUI as bookManageGUI
+import ui.addBookGUI as addBookGUI
 import loginFunc
 import ctypes
 
@@ -11,10 +11,12 @@ root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
 
+current_frame = None
+
 login_page = loginGUI.login_gui_start(root)
-book_manage_page = bookManageGUI.book_manage_gui_start(root)
 acc_management_page = accManageGUI.acc_management_gui_start(root)
 dashboard_page = dashboardGUI.dashboard_gui_start(root)
+add_book_page = addBookGUI.add_book_gui_start(root)
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry

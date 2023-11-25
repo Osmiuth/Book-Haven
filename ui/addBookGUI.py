@@ -8,12 +8,12 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-def book_manage_gui_start(root):
-    book_manage_gui = Frame(root)
-    book_manage_gui.pack(fill="both", expand=True)
+def add_book_gui_start(root):
+    add_book_gui = Frame(root)
+    add_book_gui.pack(fill="both", expand=True)
 
     canvas = Canvas(
-        book_manage_gui,
+        add_book_gui,
         bg = "#FFFFFF",
         height = 667,
         width = 937,
@@ -42,7 +42,7 @@ def book_manage_gui_start(root):
     submit_button_image = PhotoImage(
         file=relative_to_assets("button_1.png"))
     submit_button = Button(
-        book_manage_gui,
+        add_book_gui,
         image=submit_button_image,
         borderwidth=0,
         highlightthickness=0,
@@ -161,30 +161,42 @@ def book_manage_gui_start(root):
         font=("Poppins Regular", 10 * -1)
     )
 
-    canvas.create_text(
-        58.156341552734375,
-        215.15625,
-        anchor="nw",
-        text="Book Management",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+    add_books_button = Button(
+        add_book_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#FFFFFF",
+        text="Add Books",
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    add_books_button.place(
+        x=75,
+        y=215.15625,
     )
 
     image_image_6 = PhotoImage(
         file=relative_to_assets("image_6.png"))
     image_6 = canvas.create_image(
-        62.458831787109375,
+        59,
         275.4583740234375,
         image=image_image_6
     )
 
-    canvas.create_text(
-        78.60556030273438,
-        268.15625,
-        anchor="nw",
+    edit_user_profile_button = Button(
+        add_book_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Edit Profile",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    edit_user_profile_button.place(
+        x=75,
+        y=268.15625,
     )
 
     image_image_7 = PhotoImage(
@@ -198,18 +210,24 @@ def book_manage_gui_start(root):
     image_image_8 = PhotoImage(
         file=relative_to_assets("image_8.png"))
     image_8 = canvas.create_image(
-        43.156341552734375,
+        59,
         223.642578125,
         image=image_image_8
     )
 
-    canvas.create_text(
-        75.60556030273438,
-        166.15625,
-        anchor="nw",
+    dashboard_button = Button(
+        add_book_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Dashboard",
-        fill="#FFFFFF",
         font=("Poppins SemiBold", 10 * -1)
+    )
+    dashboard_button.place(
+        x=75.60556030273438,
+        y=166.15625,
     )
 
     book_name_entry_image = PhotoImage(
@@ -220,7 +238,7 @@ def book_manage_gui_start(root):
         image=book_name_entry_image
     )
     book_name_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -241,7 +259,7 @@ def book_manage_gui_start(root):
         image=author_entry_image
     )
     author_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -262,7 +280,7 @@ def book_manage_gui_start(root):
         image=isbn_entry_image
     )
     isbn_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -283,7 +301,7 @@ def book_manage_gui_start(root):
         image=date_published_entry_image
     )
     date_published_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -304,7 +322,7 @@ def book_manage_gui_start(root):
         image=genre_entry_image
     )
     genre_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -325,7 +343,7 @@ def book_manage_gui_start(root):
         image=price_entry_image
     )
     price_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -346,7 +364,7 @@ def book_manage_gui_start(root):
         image=stock_entry_image
     )
     stock_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -367,7 +385,7 @@ def book_manage_gui_start(root):
         image=book_description_entry_image
     )
     book_description_entry = Text(
-        book_manage_gui,
+        add_book_gui,
         bd=0,
         bg="#FFFFFF",
         fg="#000716",
@@ -380,22 +398,26 @@ def book_manage_gui_start(root):
         height=120.0
     )
 
-    book_manage_gui.image_image_1 = image_image_1
-    book_manage_gui.image_image_2 = image_image_2
-    book_manage_gui.submit_button_image = submit_button_image
-    book_manage_gui.image_image_3 = image_image_3
-    book_manage_gui.image_image_4 = image_image_4
-    book_manage_gui.image_image_5 = image_image_5
-    book_manage_gui.image_image_6 = image_image_6
-    book_manage_gui.image_image_7 = image_image_7
-    book_manage_gui.image_image_8 = image_image_8
-    book_manage_gui.book_name_entry_image = book_name_entry_image
-    book_manage_gui.author_entry_image = author_entry_image
-    book_manage_gui.isbn_entry_image = isbn_entry_image
-    book_manage_gui.date_published_entry_image = date_published_entry_image
-    book_manage_gui.genre_entry_image = genre_entry_image
-    book_manage_gui.price_entry_image = price_entry_image
-    book_manage_gui.stock_entry_image = stock_entry_image
-    book_manage_gui.book_description_entry_image = book_description_entry_image
+    add_book_gui.image_image_1 = image_image_1
+    add_book_gui.image_image_2 = image_image_2
+    add_book_gui.submit_button_image = submit_button_image
+    add_book_gui.image_image_3 = image_image_3
+    add_book_gui.image_image_4 = image_image_4
+    add_book_gui.image_image_5 = image_image_5
+    add_book_gui.image_image_6 = image_image_6
+    add_book_gui.image_image_7 = image_image_7
+    add_book_gui.image_image_8 = image_image_8
+    add_book_gui.book_name_entry_image = book_name_entry_image
+    add_book_gui.author_entry_image = author_entry_image
+    add_book_gui.isbn_entry_image = isbn_entry_image
+    add_book_gui.date_published_entry_image = date_published_entry_image
+    add_book_gui.genre_entry_image = genre_entry_image
+    add_book_gui.price_entry_image = price_entry_image
+    add_book_gui.stock_entry_image = stock_entry_image
+    add_book_gui.book_description_entry_image = book_description_entry_image
 
-    return book_manage_gui
+    add_book_gui.dashboard_button = dashboard_button
+    add_book_gui.add_books_button = add_books_button
+    add_book_gui.edit_user_profile_button = edit_user_profile_button
+
+    return add_book_gui
