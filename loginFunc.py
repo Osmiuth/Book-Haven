@@ -15,9 +15,11 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 
 
-def verify_login(username: str, password: str) -> bool:
+def verify_login(username: str, password: str):
     try:
-        login = auth.sign_in_with_email_and_password(username, password)
-        return True
+        auth.sign_in_with_email_and_password(username, password)
+        user_info = auth.get_account_info(auth.current_user['idToken'])
+        user_id = user_info['users'][0]['localId']
+        return True, user_id
     except:
-        return False
+        return False, None
