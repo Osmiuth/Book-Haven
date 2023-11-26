@@ -1,8 +1,10 @@
 from tkinter import Button, Tk, Text
+
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
 import loginFunc
+import editProf
 import ctypes
 
 root = Tk()
@@ -22,10 +24,15 @@ password_entry = login_page.password_entry
 search_entry = dashboard_page.search_entry
 
 submit_button = login_page.submit_button
+edit_settings_button = dashboard_page.edit_user_profile_button
+db_button = acc_management_page.dashboard_button
 
 book_list_canvas = dashboard_page.book_list_canvas
 
 login_submit_button = login_page.submit_button
+
+user_ID = None
+
 
 def show_frame(frame_to_show):
     global current_frame
@@ -49,8 +56,21 @@ def on_button_click():
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
 
 
+def on_button_click_edit_settings():
+    print(user_ID)
+    if user_ID == user_ID:
+        print("Settings updated successfully")
+        show_frame(acc_management_page)
+    else:
+        ctypes.windll.user32.MessageBoxW(0, "Unauthorized Access!", "There is a UID mismatch", 1)
+
+
+def on_button_click_dashboard():
+    show_frame(dashboard_page)
+
+
 submit_button.configure(command=lambda: on_button_click())
-
-
+edit_settings_button.configure(command=lambda: on_button_click_edit_settings())
+db_button.configure(command=lambda: on_button_click_dashboard())
 
 root.mainloop()
