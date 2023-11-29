@@ -11,12 +11,12 @@ root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
 
-current_frame = None
-
-dashboard_page = dashboardGUI.dashboard_gui_start(root)
 login_page = loginGUI.login_gui_start(root)
+dashboard_page = dashboardGUI.dashboard_gui_start(root)
 acc_management_page = accManageGUI.acc_management_gui_start(root)
 add_book_page = addBookGUI.add_book_gui_start(root)
+
+current_frame = login_page
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
@@ -41,10 +41,13 @@ def show_frame(frame_to_show):
 
 
 def on_button_click():
-    result = False
+    global user_ID
     result = loginFunc.verify_login(username_entry.get(), password_entry.get())
+    print(result)
     if result:
+        user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
         print("works")
+        print(user_ID)
         show_frame(dashboard_page)
     else:
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
@@ -52,5 +55,5 @@ def on_button_click():
 
 submit_button.configure(command=lambda: on_button_click())
 
-#show_frame(login_page)
+
 root.mainloop()
