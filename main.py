@@ -1,4 +1,4 @@
-from tkinter import Button, Tk, Text
+from tkinter import Tk
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
@@ -13,9 +13,9 @@ root.resizable(False, False)
 
 current_frame = None
 
+dashboard_page = dashboardGUI.dashboard_gui_start(root)
 login_page = loginGUI.login_gui_start(root)
 acc_management_page = accManageGUI.acc_management_gui_start(root)
-dashboard_page = dashboardGUI.dashboard_gui_start(root)
 add_book_page = addBookGUI.add_book_gui_start(root)
 
 username_entry = login_page.username_entry
@@ -25,7 +25,8 @@ search_entry = dashboard_page.search_entry
 
 submit_button = login_page.submit_button
 
-book_list_canvas = dashboard_page.book_list_canvas
+book_list_frame = dashboard_page.book_list_frame
+
 
 login_submit_button = login_page.submit_button
 
@@ -51,5 +52,5 @@ def on_button_click():
 
 submit_button.configure(command=lambda: on_button_click())
 
-show_frame(login_page)
+#show_frame(login_page)
 root.mainloop()

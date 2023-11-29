@@ -8,7 +8,14 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
+firstName = "Clint Jonathan"
+lastName = "Galendez"
+
+
 def acc_management_gui_start(root):
+    global firstName
+    global lastName
+
     acc_management_gui = Frame(root)
     acc_management_gui.pack(fill="both", expand=True)
 
@@ -51,7 +58,7 @@ def acc_management_gui_start(root):
         231.0,
         90.0,
         anchor="nw",
-        text="Galendez, \nClint Jonathan A.",
+        text=lastName + "\n" + firstName,
         fill="#020000",
         font=("Poppins SemiBold", 40 * -1)
     )
@@ -297,5 +304,8 @@ def acc_management_gui_start(root):
     acc_management_gui.dashboard_button = dashboard_button
     acc_management_gui.add_books_button = add_books_button
     acc_management_gui.edit_user_profile_button = edit_user_profile_button
+
+    acc_management_gui.firstName = firstName
+    acc_management_gui.lastName = lastName
 
     return acc_management_gui
