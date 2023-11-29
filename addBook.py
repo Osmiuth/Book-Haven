@@ -2,7 +2,7 @@ import pyrebase
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-from firebase_admin import auth
+
 
 
 firebaseConfig = {
@@ -22,18 +22,24 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://book-haven-database-default-rtdb.asia-southeast1.firebasedatabase.app'
 })
 
-ref = db.reference('Manager')
+ref = db.reference('BookManagement')
 print(ref.get())
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 
 
-def edit_settings(new_username, new_password):
+def add_book(new_bookname, new_author, new_isbn, new_amount, new_bookID, new_genre, new_publisher, new_description, new_stock):
     try:
-
-        ref.child("username").set(new_username)
-        ref.child("password").set(new_password)
+        ref.child("bookname").set(new_bookname)
+        ref.child("author").set(new_author)
+        ref.child("isbn").set(new_isbn)
+        ref.child("amount").set(new_amount)
+        ref.child("bookID").set(new_bookID)
+        ref.child("genre").set(new_genre)
+        ref.child("publisher").set(new_publisher)
+        ref.child("description").set(new_description)
+        ref.child("stock").set(new_stock)
         return True
     except:
         return False

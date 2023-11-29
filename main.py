@@ -61,6 +61,7 @@ def on_button_click():
     global user_ID
     result, user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
     print(result)
+    get_uid()
     if result:
         print("works")
         print(user_ID)
@@ -96,7 +97,6 @@ def on_button_click_edit_submit():
     current_password = acc_management_page.current_password_entry.get("1.0", "end-1c")
     new_password = acc_management_page.new_password_entry.get("1.0", "end-1c")
 
-    result = loginFunc.verify_login(username_entry.get(), password_entry.get())
     if current_password == current_password:
         try:
             editProf.edit_settings(new_username, new_password)
@@ -105,6 +105,11 @@ def on_button_click_edit_submit():
             print("Failed")
     else:
         ctypes.windll.user32.MessageBoxW(0, "Unauthorized Access!", "There is a UID mismatch", 1)
+
+
+def get_uid():
+    print(user_ID)
+    return user_ID
 
 
 submit_button.configure(command=lambda: on_button_click())
