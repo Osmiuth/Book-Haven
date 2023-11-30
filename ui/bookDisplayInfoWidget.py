@@ -1,6 +1,8 @@
 import tkinter
 from pathlib import Path
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Frame
+from tkinter import Canvas, Button, PhotoImage, Frame
+import ui.uiManager as uiManager
+
 
 
 ASSETS_PATH = Path(r"ui/assets/bookDisplayInfo")
@@ -46,10 +48,11 @@ class BookDisplayInfoWidget(Frame):
         self.book_title_text = self.canvas.create_text(
             140.0,
             17.0,
-            anchor="nw",
+            anchor="nw",  # Set anchor to "w" for wrapping
             text="Book Title",
             fill="#020000",
-            font=("Poppins SemiBold", 24 * -1)
+            font=("Poppins SemiBold", 11 * -1),
+            width=170,  # Set the width of your canvas
         )
 
         self.author_text = self.canvas.create_text(
@@ -140,6 +143,7 @@ class BookDisplayInfoWidget(Frame):
             height=52.0
         )
 
+        max_width = 200
         self.canvas.itemconfig(self.book_title_text, text=book_title)
         self.canvas.itemconfig(self.author_text, text=author)
         self.canvas.itemconfig(self.date_added_text, text=date_added)
