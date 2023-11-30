@@ -26,14 +26,17 @@ ref = db.reference('Manager')
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
-
+print(ref.get())
 
 def edit_settings(new_username, new_password):
     try:
-
-        ref.child("username").set(new_username)
-        ref.child("password").set(new_password)
-        auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", display_name=new_username, password=new_password)
+        if new_username == '':
+            ref.child("password").set(new_password)
+            auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", password=new_password)
+        else:
+            ref.child("username").set(new_username)
+            ref.child("password").set(new_password)
+            auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", display_name=new_username, password=new_password)
         return True
     except:
         return False
