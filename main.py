@@ -1,13 +1,13 @@
 from tkinter import Button, Tk, Text
 
 import addBook
-import retrieveBooks
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
 import ui.addBookGUI as addBookGUI
 import loginFunc
 import editProf
+import dashboardFunc
 import ctypes
 
 
@@ -15,16 +15,18 @@ root = Tk()
 root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
+current_frame = None
 
 login_page = loginGUI.login_gui_start(root)
 dashboard_page = dashboardGUI.dashboard_gui_start(root)
-acc_management_page = accManageGUI.acc_management_gui_start(root)
 add_books_page = addBookGUI.add_book_gui_start(root)
-
-current_frame = login_page
+acc_management_page = accManageGUI.acc_management_gui_start(root)
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
+
+dashboard_set_name = dashboard_page.set_name
+account_management_set_name = acc_management_page.set_name
 
 search_entry = dashboard_page.search_entry
 
@@ -64,6 +66,13 @@ def show_frame(frame_to_show):
     frame_to_show.pack(fill="both", expand=True)
 
 
+show_frame(login_page)
+show_frame(dashboard_page)
+show_frame(add_books_page)
+show_frame(acc_management_page)
+show_frame(login_page)
+
+
 def on_button_click():
     global user_ID
     result, user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
@@ -71,16 +80,14 @@ def on_button_click():
     get_uid()
     if result:
         show_frame(dashboard_page)
+        dashboardFunc.show_book_list(dashboard_page)
     else:
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
 
 
 def on_button_click_add_books():
-    if user_ID == user_ID:
-        print("Settings updated successfully")
-        show_frame(add_books_page)
-    else:
-        ctypes.windll.user32.MessageBoxW(0, "Unauthorized Access!", "There is a UID mismatch", 1)
+    print("Settings updated successfully")
+    show_frame(add_books_page)
 
 
 def on_button_click_edit_settings():
@@ -164,6 +171,5 @@ edit_submit_button.configure(command=lambda: on_button_click_edit_submit())
 add_submit_button.configure(command=lambda: on_button_click_add_submit())
 
 submit_button.configure(command=lambda: on_button_click())
-
 
 root.mainloop()
