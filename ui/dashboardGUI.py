@@ -167,7 +167,7 @@ def dashboard_gui_start(root):
         font=("Poppins Regular", 10 * -1)
     )
 
-    canvas.create_text(
+    name = canvas.create_text(
         242.0,
         113.00003051757812,
         anchor="nw",
@@ -240,25 +240,21 @@ def dashboard_gui_start(root):
         y=245
     )
 
-    book1 = bookDisplayInfoWidget.BookDisplayInfoWidget(
-        parent=book_list_frame,
-        book_title="Book Name",
-        author="Author",
-        date_added="Date Added",
-        stock="Stock",
-        price="Price",
-    )
-    book1.grid(row=0, column=0, padx=10, pady=10)
+    def show_book(book_title, author, date_added, stock, price, i, j):
+        book = bookDisplayInfoWidget.BookDisplayInfoWidget(
+            parent=book_list_frame,
+            book_title=book_title,
+            author=author,
+            date_added=date_added,
+            stock=stock,
+            price=price,
+        )
+        book.grid(row=i, column=j, padx=10, pady=10)
 
-    book2 = bookDisplayInfoWidget.BookDisplayInfoWidget(
-        parent=book_list_frame,
-        book_title="Book Name",
-        author="Author",
-        date_added="Date Added",
-        stock="Stock",
-        price="Price",
-    )
-    book2.grid(row=0, column=1, padx=10, pady=10)
+        return book
+
+    def set_name(first_name):
+        canvas.itemconfigure(name, text="Welcome back, " + first_name + "!")
 
     dashboard_gui.side_board_image = side_board_image
     dashboard_gui.logout_image_set_1 = logout_image_set_1
@@ -281,6 +277,8 @@ def dashboard_gui_start(root):
     dashboard_gui.edit_user_profile_button = edit_user_profile_button
     dashboard_gui.book_list_canvas = book_list_canvas
 
-    dashboard_gui.firstName = firstName
+    dashboard_gui.set_name = set_name
+
+    dashboard_gui.show_book = show_book
 
     return dashboard_gui
