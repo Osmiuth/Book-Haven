@@ -28,6 +28,7 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
 print(ref.get())
 
+
 def edit_settings(new_username, new_password):
     try:
         if new_username == '':

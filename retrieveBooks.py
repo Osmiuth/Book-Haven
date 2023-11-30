@@ -9,9 +9,11 @@ firebase_admin.initialize_app(cred, {'databaseURL': 'https://book-haven-database
 # Use the correct app name when accessing the reference
 ref = db.reference('BookManagement')
 
+
 def retrieve_book(isbn):
     book = ref.child(isbn).get()
     return book
+
 
 def retrieve_all_books():
     books = ref.get()

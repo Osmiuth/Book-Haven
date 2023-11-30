@@ -10,7 +10,6 @@ import loginFunc
 import editProf
 import ctypes
 
-
 root = Tk()
 root.geometry("937x667")
 root.configure(bg="red")
