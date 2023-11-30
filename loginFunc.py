@@ -1,5 +1,6 @@
 import pyrebase
 
+
 firebaseConfig = {
     "apiKey": "AIzaSyDOdgrqn0uQMc_Mv6A1Sh6elSCmG6GwkKY",
     "authDomain": "book-haven-database.firebaseapp.com",
