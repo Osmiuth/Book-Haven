@@ -279,6 +279,7 @@ def dashboard_gui_start(root):
     dashboard_gui.dashboard_button = dashboard_button
     dashboard_gui.add_books_button = add_books_button
     dashboard_gui.edit_user_profile_button = edit_user_profile_button
+    dashboard_gui.book_list_canvas = book_list_canvas
 
     dashboard_gui.firstName = firstName
 
