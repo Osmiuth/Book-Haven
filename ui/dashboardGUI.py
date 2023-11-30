@@ -1,6 +1,8 @@
 from pathlib import Path
 from tkinter import Canvas, Entry, PhotoImage, Frame, Button
 import ui.uiManager as uiManager
+import ui.bookDisplayInfoWidget as bookDisplayInfoWidget
+
 
 
 ASSETS_PATH = Path(r"ui/assets/dashboard")
@@ -10,7 +12,12 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
+firstName = "Clint"
+
+
 def dashboard_gui_start(root):
+    global firstName
+
     dashboard_gui = Frame(root)
     dashboard_gui.pack(fill="both", expand=True)
 
@@ -164,7 +171,7 @@ def dashboard_gui_start(root):
         242.0,
         113.00003051757812,
         anchor="nw",
-        text="Welcome back, John!",
+        text="Welcome back, " + firstName + "!",
         fill="#FFFFFF",
         font=("Poppins SemiBold", 20 * -1)
     )
@@ -221,6 +228,38 @@ def dashboard_gui_start(root):
     search_entry.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(search_entry, "Search Books"))
     search_entry.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(search_entry, "Search Books"))
 
+    book_list_frame = Frame(
+        dashboard_gui,
+        width=700,
+        height=399,
+        borderwidth=1,
+        bg="#FFFFFF",
+    )
+    book_list_frame.place(
+        x=211,
+        y=245
+    )
+
+    book1 = bookDisplayInfoWidget.BookDisplayInfoWidget(
+        parent=book_list_frame,
+        book_title="Book Name",
+        author="Author",
+        date_added="Date Added",
+        stock="Stock",
+        price="Price",
+    )
+    book1.grid(row=0, column=0, padx=10, pady=10)
+
+    book2 = bookDisplayInfoWidget.BookDisplayInfoWidget(
+        parent=book_list_frame,
+        book_title="Book Name",
+        author="Author",
+        date_added="Date Added",
+        stock="Stock",
+        price="Price",
+    )
+    book2.grid(row=0, column=1, padx=10, pady=10)
+
     dashboard_gui.side_board_image = side_board_image
     dashboard_gui.logout_image_set_1 = logout_image_set_1
     dashboard_gui.logout_image_set_2 = logout_image_set_2
@@ -233,11 +272,14 @@ def dashboard_gui_start(root):
     dashboard_gui.backpack_image = backpack_image
     dashboard_gui.search_box_image = search_entry_image
 
-    dashboard_gui.book_list_canvas = book_list_canvas
     dashboard_gui.search_entry = search_entry
+
+    dashboard_gui.book_list_frame = book_list_frame
 
     dashboard_gui.dashboard_button = dashboard_button
     dashboard_gui.add_books_button = add_books_button
     dashboard_gui.edit_user_profile_button = edit_user_profile_button
+
+    dashboard_gui.firstName = firstName
 
     return dashboard_gui

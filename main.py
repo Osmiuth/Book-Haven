@@ -1,10 +1,13 @@
+
 from tkinter import Button, Tk, Text
+
 
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
 import ui.accManageGUI as accManageGUI
 import ui.addBookGUI as addBookGUI
 import loginFunc
+
 import editProf
 import ctypes
 
@@ -26,6 +29,7 @@ password_entry = login_page.password_entry
 search_entry = dashboard_page.search_entry
 
 submit_button = login_page.submit_button
+
 edit_submit_button = acc_management_page.submit_button
 
 db_button1 = dashboard_page.dashboard_button
@@ -48,6 +52,12 @@ login_submit_button = login_page.submit_button
 user_ID = None
 
 
+book_list_frame = dashboard_page.book_list_frame
+
+
+login_submit_button = login_page.submit_button
+
+
 def show_frame(frame_to_show):
     global current_frame
     if current_frame:
@@ -63,6 +73,7 @@ def on_button_click():
     print(result)
     get_uid()
     if result:
+        user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
         print("works")
         print(user_ID)
         show_frame(dashboard_page)
@@ -127,5 +138,8 @@ add_books_button3.configure(command=lambda: on_button_click_add_books())
 edit_settings_button3.configure(command=lambda: on_button_click_edit_settings())
 
 edit_submit_button.configure(command=lambda: on_button_click_edit_submit())
+
+submit_button.configure(command=lambda: on_button_click())
+
 
 root.mainloop()
