@@ -9,6 +9,8 @@ import loginFunc
 import editProf
 import dashboardFunc
 import ctypes
+from datetime import datetime
+
 
 root = Tk()
 root.geometry("937x667")
@@ -128,7 +130,8 @@ def on_button_click_add_books(isbn=None):
         add_books_page.isbn_entry.insert("1.0", book_info.get('isbn', ''))
         add_books_page.price_entry.insert("1.0", book_info.get('amount', ''))
         add_books_page.genre_entry.insert("1.0", book_info.get('genre', ''))
-        add_books_page.date_published_entry.insert("1.0", book_info.get('publisher', ''))
+        date_string = book_info.get('publisher', '')
+        add_books_page.date_published_entry.set_date(datetime.strptime(date_string, '%Y-%m-%d'))
         add_books_page.book_description_entry.insert("1.0", book_info.get('description', ''))
         add_books_page.stock_entry.insert("1.0", book_info.get('stock', ''))
         show_frame(add_books_page)
@@ -171,7 +174,7 @@ def on_button_click_add_submit(): #Add-Book-Button
     isbn = add_books_page.isbn_entry.get("1.0", "end-1c")
     amount = add_books_page.price_entry.get("1.0", "end-1c")
     genre = add_books_page.genre_entry.get("1.0", "end-1c")
-    publisher = add_books_page.date_published_entry.get("1.0", "end-1c")
+    publisher = str(add_books_page.date_published_entry.get_date())
     description = add_books_page.book_description_entry.get("1.0", "end-1c")
     stock = add_books_page.stock_entry.get("1.0", "end-1c")
 
