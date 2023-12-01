@@ -77,25 +77,44 @@ show_frame(login_page)
 
 
 def configure_buttons():
+    global widget_list
+
     for widget in widget_list:
         edit_button = widget.get_edit_button()
         delete_button = widget.get_delete_button()
-        isbn = widget.get_isbn()
 
         # Configure edit button command
-        edit_button.configure(command=lambda: on_button_click_add_books(isbn))
+        edit_button.configure(command=lambda isbn=widget.get_isbn(): on_button_click_add_books(isbn))
+        delete_button.configure(command=lambda isbn=widget.get_isbn(): on_button_delete(isbn))
+
+
+def on_button_delete(isbn):
+    global widget_list
+
+    dashboard_page.remove_book_list()
+    print("Delete button clicked")
+    dashboardFunc.delete_book(isbn)
+    dashboardFunc.show_book_list(dashboard_page)
+    widget_list = dashboardFunc.show_book_list(dashboard_page)
+    configure_buttons()
+
+
+def dashboard_reset():
+    global book_list, widget_list
+    dashboard_page.remove_book_list()
+    widget_list = dashboardFunc.show_book_list(dashboard_page)
+    book_list = dashboardFunc.book_list
+    configure_buttons()
+    show_frame(dashboard_page)
 
 
 def on_button_click():
-    global user_ID, book_list, widget_list
+    global user_ID
     result, user_ID = loginFunc.verify_login(username_entry.get(), password_entry.get())
     print(result)
     get_uid()
     if result:
-        show_frame(dashboard_page)
-        widget_list = dashboardFunc.show_book_list(dashboard_page)
-        book_list = dashboardFunc.book_list
-        configure_buttons()
+        dashboard_reset()
     else:
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
 
@@ -128,8 +147,7 @@ def on_button_click_edit_settings():
 
 
 def on_button_click_dashboard():
-    dashboardFunc.show_book_list(dashboard_page)
-    show_frame(dashboard_page)
+    dashboard_reset()
 
 
 def on_button_click_edit_submit(): #Edit-Profile-Submit

@@ -17,6 +17,16 @@ def retrieve_book(isbn):
     return book
 
 
+def delete_book(isbn):
+    try:
+        ref.child(isbn).delete()
+        print("Book deleted successfully")
+        return True
+    except:
+        print("Book deletion failed")
+        return False
+
+
 def show_book_list(dashboard_page, is_searching=False, list_of_books=None):
     global book_list
     books_data = None
