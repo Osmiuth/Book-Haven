@@ -18,6 +18,7 @@ from datetime import datetime
 root = CTk()
 customtkinter.deactivate_automatic_dpi_awareness()
 root.geometry("937x667")
+root.title("Book Haven - Book Management System")
 root.configure(bg="red")
 root.resizable(False, False)
 current_frame = None
@@ -210,11 +211,11 @@ def on_button_click_add_submit(): #Add-Book-Button
 
     try:
         if not check_character_limit(amount, 10000):
-            ctypes.windll.user32.MessageBoxW(0, "Book name is too long. Please enter a shorter name.", "Error", 1)
+            ctypes.windll.user32.MessageBoxW(0, "Amount has exceeded Limit. Please enter a shorter name.", "Error", 1)
             return
 
         if not check_character_limit(amount, 1000000):
-            ctypes.windll.user32.MessageBoxW(0, "Book name is too long. Please enter a shorter name.", "Error", 1)
+            ctypes.windll.user32.MessageBoxW(0, "Stock has exceeded Limit. Please enter a shorter name.", "Error", 1)
             return
 
         amount = float(amount)
