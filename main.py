@@ -116,6 +116,8 @@ def on_button_click():
     print(result)
     get_uid()
     if result:
+        print(dashboardFunc.get_first_name())
+        dashboard_page.canvas.itemconfig(dashboard_page.name, text="Welcome back, " + dashboardFunc.get_first_name() + "!")
         dashboard_reset()
     else:
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
@@ -144,6 +146,7 @@ def on_button_click_edit_settings():
     if user_ID == user_ID:
         name_text = ""
         print("Settings updated successfully")
+        acc_management_page.canvas.itemconfig(acc_management_page.name, text=dashboardFunc.get_last_name() + ",\n" + dashboardFunc.get_first_name())
         show_frame(acc_management_page)
     else:
         ctypes.windll.user32.MessageBoxW(0, "Unauthorized Access!", "There is a UID mismatch", 1)
@@ -187,6 +190,9 @@ def on_button_click_add_submit(): #Add-Book-Button
         stock = int(stock)
         print(amount)
         print(stock)
+        if not addBook.is_valid_isbn(isbn):
+            ctypes.windll.user32.MessageBoxW(0, "Invalid ISBN. Please enter a valid ISBN.", "Error", 1)
+            return
     except:
         ctypes.windll.user32.MessageBoxW(0, "Invalid input. Please enter a valid value.", "Error", 1)
 

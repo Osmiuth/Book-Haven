@@ -285,4 +285,7 @@ def dashboard_gui_start(root):
     dashboard_gui.show_book = show_book
     dashboard_gui.remove_book_list = remove_book_list
 
+    dashboard_gui.canvas = canvas
+    dashboard_gui.name = name
+
     return dashboard_gui
