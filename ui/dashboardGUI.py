@@ -57,13 +57,19 @@ def dashboard_gui_start(root):
         image=logout_image_set_2
     )
 
-    canvas.create_text(
-        69.696044921875,
-        599.2577514648438,
-        anchor="nw",
+    logout_button = Button(
+        dashboard_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Logout",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    logout_button.place(
+        x=67.85238647460938,
+        y=595.4140014648438,
     )
 
     add_books_button = Button(
@@ -283,5 +289,7 @@ def dashboard_gui_start(root):
 
     dashboard_gui.canvas = canvas
     dashboard_gui.name = name
+
+    dashboard_gui.logout_button = logout_button
 
     return dashboard_gui

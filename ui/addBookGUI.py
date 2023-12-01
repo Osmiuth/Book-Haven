@@ -163,13 +163,19 @@ def add_book_gui_start(root):
         image=image_image_5
     )
 
-    canvas.create_text(
-        67.85238647460938,
-        599.4140014648438,
-        anchor="nw",
+    logout_button = Button(
+        add_book_gui,
+        borderwidth=0,
+        highlightthickness=0,
+        background="#925FE2",
+        activebackground="#925FE2",
+        foreground="#DEDEDE",
         text="Logout",
-        fill="#FFFFFF",
-        font=("Poppins Regular", 10 * -1)
+        font=("Poppins SemiBold", 10 * -1)
+    )
+    logout_button.place(
+        x=67.85238647460938,
+        y=595.4140014648438,
     )
 
     add_books_button = Button(
@@ -440,5 +446,7 @@ def add_book_gui_start(root):
     add_book_gui.add_books_button = add_books_button
     add_book_gui.submit_button = submit_button
     add_book_gui.edit_user_profile_button = edit_user_profile_button
+
+    add_book_gui.logout_button = logout_button
 
     return add_book_gui
