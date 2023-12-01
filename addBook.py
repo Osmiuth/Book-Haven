@@ -43,7 +43,6 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
     except:
         return False
 
-
 def is_child_exists(child_path):
     ref = db.reference("BookManagement").child(child_path)
     snapshot = ref.get()
