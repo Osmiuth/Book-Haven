@@ -1,5 +1,6 @@
 from pathlib import Path
 from tkinter import Canvas, Text, Button, PhotoImage, Frame
+from tkcalendar import Calendar, DateEntry
 
 ASSETS_PATH = Path(r"ui/assets/bookManage")
 
@@ -300,18 +301,17 @@ def add_book_gui_start(root):
         165.0,
         image=date_published_entry_image
     )
-    date_published_entry = Text(
+    date_published_entry = DateEntry(
         add_book_gui,
-        bd=0,
-        bg="#FFFFFF",
+        bg="white",
         fg="#000716",
-        highlightthickness=0
+        year=2010
     )
     date_published_entry.place(
         x=707.0,
-        y=148.0,
-        width=180.0,
-        height=27.0
+        y=144.0,
+        width=180,
+        height=26.0,
     )
 
     genre_entry_image = PhotoImage(
