@@ -136,7 +136,7 @@ def on_button_click_add_books(isbn=None):
         add_books_page.isbn_entry.insert("1.0", book_info.get('isbn', ''))
         add_books_page.price_entry.insert("1.0", book_info.get('amount', ''))
         add_books_page.genre_entry.insert("1.0", book_info.get('genre', ''))
-        date_string = book_info.get('publisher', '')
+        date_string = book_info.get('publication', '')
         add_books_page.date_published_entry.set_date(datetime.strptime(date_string, '%Y-%m-%d'))
         add_books_page.book_description_entry.insert("1.0", book_info.get('description', ''))
         add_books_page.stock_entry.insert("1.0", book_info.get('stock', ''))
@@ -190,6 +190,14 @@ def on_button_click_add_submit(): #Add-Book-Button
     stock = add_books_page.stock_entry.get("1.0", "end-1c")
 
     try:
+        if not check_character_limit(amount, 10000):
+            ctypes.windll.user32.MessageBoxW(0, "Book name is too long. Please enter a shorter name.", "Error", 1)
+            return
+
+        if not check_character_limit(amount, 1000000):
+            ctypes.windll.user32.MessageBoxW(0, "Book name is too long. Please enter a shorter name.", "Error", 1)
+            return
+
         amount = float(amount)
         stock = int(stock)
         print(amount)
@@ -217,6 +225,7 @@ def on_button_click_add_submit(): #Add-Book-Button
 
     except:
         ctypes.windll.user32.MessageBoxW(0, "Invalid input. Please enter a valid value.", "Error", 1)
+        return
 
     if password_entry.get() == password_entry.get():
         try:
