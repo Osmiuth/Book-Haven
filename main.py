@@ -10,7 +10,6 @@ import editProf
 import dashboardFunc
 import ctypes
 
-
 root = Tk()
 root.geometry("937x667")
 root.configure(bg="red")
@@ -21,6 +20,9 @@ login_page = loginGUI.login_gui_start(root)
 dashboard_page = dashboardGUI.dashboard_gui_start(root)
 add_books_page = addBookGUI.add_book_gui_start(root)
 acc_management_page = accManageGUI.acc_management_gui_start(root)
+
+current_frame = login_page
+
 
 username_entry = login_page.username_entry
 password_entry = login_page.password_entry
@@ -108,11 +110,11 @@ def on_button_click_edit_submit(): #Edit-Profile-Submit
     new_username = acc_management_page.new_username_entry.get("1.0", "end-1c")
     current_password = acc_management_page.current_password_entry.get("1.0", "end-1c")
     new_password = acc_management_page.new_password_entry.get("1.0", "end-1c")
-    if current_password == password_entry.get():
+    if current_password == password_entry.get() and (new_password != ''):
         try:
             editProf.edit_settings(new_username, new_password)
             print("Successful")
-            ctypes.windll.user32.MessageBoxW(0, "Please logout to save your data.", "Success!", 1)
+            ctypes.windll.user32.MessageBoxW(0, "Success!", "Logout now", 1)
         except:
             print("Failed")
     else:
@@ -140,8 +142,6 @@ def on_button_click_add_submit(): #Add-Book-Button
     if password_entry.get() == password_entry.get():
         try:
             addBook.add_book(bookname, author, isbn, amount, genre, publisher, description, stock)
-            print("Successful")
-            ctypes.windll.user32.MessageBoxW(0, "Success!", "Success!", 1)
         except:
             print("Failed")
     else:
