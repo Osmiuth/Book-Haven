@@ -165,8 +165,12 @@ def on_button_click_edit_submit(): #Edit-Profile-Submit
             editProf.edit_settings(new_username, new_password)
             print("Successful")
             ctypes.windll.user32.MessageBoxW(0, "Success!", "Logout now", 1)
+            if new_password.get() == '':
+                ctypes.windll.user32.MessageBoxW(0, "Invalid!", "Cannot leave the New Password Empty!", 1)
+
+
         except:
-            print("Failed")
+            ctypes.windll.user32.MessageBoxW(0, "Failed to update!", "Incorrect password!", 1)
     else:
         ctypes.windll.user32.MessageBoxW(0, "Unauthorized Access!", "There is a UID mismatch", 1)
 
