@@ -206,6 +206,15 @@ def on_button_click_add_submit(): #Add-Book-Button
         if not addBook.is_valid_isbn(isbn):
             ctypes.windll.user32.MessageBoxW(0, "Invalid ISBN. Please enter a valid ISBN.", "Error", 1)
             return
+
+        if bookname == '':
+            ctypes.windll.user32.MessageBoxW(0, "Bookname cannot be empty. Please enter a valid bookname.", "Error", 1)
+            return
+        if author == '':
+            ctypes.windll.user32.MessageBoxW(0, "Author cannot be empty. Please enter a valid author.", "Error", 1)
+            return
+
+
     except:
         ctypes.windll.user32.MessageBoxW(0, "Invalid input. Please enter a valid value.", "Error", 1)
 
