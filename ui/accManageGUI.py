@@ -295,6 +295,7 @@ def acc_management_gui_start(root):
     acc_management_gui.current_password_entry = current_password_entry
     acc_management_gui.new_username_entry = new_username_entry
     acc_management_gui.name = name
+    acc_management_gui.canvas = canvas
     acc_management_gui.submit_button = submit_button
 
     acc_management_gui.dashboard_button = dashboard_button

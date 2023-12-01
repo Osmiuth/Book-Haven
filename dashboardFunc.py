@@ -8,6 +8,8 @@ firebase_admin.initialize_app(cred, {'databaseURL': 'https://book-haven-database
 
 # Use the correct app name when accessing the reference
 ref = db.reference('BookManagement')
+user_reference = db.reference('Manager')
+
 
 book_list = None
 
@@ -25,6 +27,19 @@ def delete_book(isbn):
     except:
         print("Book deletion failed")
         return False
+
+
+def get_first_name():
+    user_data = user_reference.get()
+    print(user_data)
+    first_name = user_data.get('first_Name', '')
+    return first_name
+
+
+def get_last_name():
+    user_data = user_reference.get()
+    last_name = user_data.get('last_Name', '')
+    return last_name
 
 
 def show_book_list(dashboard_page, is_searching=False, list_of_books=None):
