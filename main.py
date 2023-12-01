@@ -1,4 +1,4 @@
-from tkinter import Button, Tk, Text
+from tkinter import Button, Tk, Text, END
 
 import customtkinter
 from customtkinter import CTk
@@ -127,9 +127,20 @@ def on_button_click():
         ctypes.windll.user32.MessageBoxW(0, "Incorrect email or password!", "Incorrect Credentials", 1)
 
 
+def reset_entries():
+    add_books_page.book_name_entry.delete("0.0", "end")
+    add_books_page.author_entry.delete("0.0", "end")
+    add_books_page.isbn_entry.delete("0.0", "end")
+    add_books_page.price_entry.delete("0.0", "end")
+    add_books_page.genre_entry.delete("0.0", "end")
+    add_books_page.book_description_entry.delete("0.0", "end")
+    add_books_page.stock_entry.delete("0.0", "end")
+
+
 def on_button_click_add_books(isbn=None):
     print("Settings updated successfully")
     if isbn:
+        reset_entries()
         book_info = dashboardFunc.retrieve_book(isbn)
         add_books_page.book_name_entry.insert("1.0", book_info.get('bookname', ''))
         add_books_page.author_entry.insert("1.0", book_info.get('author', ''))
@@ -142,6 +153,7 @@ def on_button_click_add_books(isbn=None):
         add_books_page.stock_entry.insert("1.0", book_info.get('stock', ''))
         show_frame(add_books_page)
     else:
+        reset_entries()
         show_frame(add_books_page)
 
 
