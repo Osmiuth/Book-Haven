@@ -12,8 +12,6 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-firstName = "Clint"
-
 
 def dashboard_gui_start(root):
     global firstName
@@ -171,7 +169,7 @@ def dashboard_gui_start(root):
         242.0,
         113.00003051757812,
         anchor="nw",
-        text="Welcome back, " + firstName + "!",
+        text="",
         fill="#FFFFFF",
         font=("Poppins SemiBold", 20 * -1)
     )
@@ -240,21 +238,28 @@ def dashboard_gui_start(root):
         y=245
     )
 
-    def show_book(book_title, author, date_added, stock, price, i, j):
+    def show_book(isbn, book_title, author, date_added, stock, price, i, j):
         book = bookDisplayInfoWidget.BookDisplayInfoWidget(
             parent=book_list_frame,
+            isbn=isbn,
             book_title=book_title,
             author=author,
             date_added=date_added,
             stock=stock,
             price=price,
+
         )
         book.grid(row=i, column=j, padx=10, pady=10)
 
         return book
 
-    def set_name(first_name):
-        canvas.itemconfigure(name, text="Welcome back, " + first_name + "!")
+    def remove_book_list():
+        # Get all child widgets of the frame
+        widgets = book_list_frame.winfo_children()
+
+        # Destroy each widget
+        for widget in widgets:
+            widget.destroy()
 
     dashboard_gui.side_board_image = side_board_image
     dashboard_gui.logout_image_set_1 = logout_image_set_1
@@ -277,8 +282,7 @@ def dashboard_gui_start(root):
     dashboard_gui.edit_user_profile_button = edit_user_profile_button
     dashboard_gui.book_list_canvas = book_list_canvas
 
-    dashboard_gui.set_name = set_name
-
     dashboard_gui.show_book = show_book
+    dashboard_gui.remove_book_list = remove_book_list
 
     return dashboard_gui
