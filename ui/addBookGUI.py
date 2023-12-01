@@ -398,6 +398,7 @@ def add_book_gui_start(root):
         height=120.0
     )
 
+
     add_book_gui.image_image_1 = image_image_1
     add_book_gui.image_image_2 = image_image_2
     add_book_gui.submit_button_image = submit_button_image
@@ -407,14 +408,6 @@ def add_book_gui_start(root):
     add_book_gui.image_image_6 = image_image_6
     add_book_gui.image_image_7 = image_image_7
     add_book_gui.image_image_8 = image_image_8
-    add_book_gui.book_name_entry = book_name_entry
-    add_book_gui.author_entry = author_entry
-    add_book_gui.isbn_entry = isbn_entry
-    add_book_gui.date_published_entry = date_published_entry
-    add_book_gui.genre_entry = genre_entry
-    add_book_gui.price_entry = price_entry
-    add_book_gui.stock_entry = stock_entry
-    add_book_gui.book_description_entry = book_description_entry
     add_book_gui.book_name_entry_image = book_name_entry_image
     add_book_gui.author_entry_image = author_entry_image
     add_book_gui.isbn_entry_image = isbn_entry_image
@@ -423,6 +416,15 @@ def add_book_gui_start(root):
     add_book_gui.price_entry_image = price_entry_image
     add_book_gui.stock_entry_image = stock_entry_image
     add_book_gui.book_description_entry_image = book_description_entry_image
+
+    add_book_gui.book_name_entry = book_name_entry
+    add_book_gui.author_entry = author_entry
+    add_book_gui.isbn_entry = isbn_entry
+    add_book_gui.date_published_entry = date_published_entry
+    add_book_gui.genre_entry = genre_entry
+    add_book_gui.price_entry = price_entry
+    add_book_gui.stock_entry = stock_entry
+    add_book_gui.book_description_entry = book_description_entry
 
     add_book_gui.dashboard_button = dashboard_button
     add_book_gui.add_books_button = add_books_button

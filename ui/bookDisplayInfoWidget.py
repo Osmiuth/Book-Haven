@@ -13,8 +13,10 @@ def relative_to_assets(path: str) -> Path:
 
 
 class BookDisplayInfoWidget(Frame):
-    def __init__(self, parent, book_title, author, date_added, stock, price):
+    def __init__(self, parent, isbn, book_title, author, date_added, stock, price):
         Frame.__init__(self, parent, bg="#925FE2", borderwidth=4, border=1)
+
+        self.isbn = isbn
 
         self.canvas = Canvas(
             self,
@@ -149,3 +151,13 @@ class BookDisplayInfoWidget(Frame):
         self.canvas.itemconfig(self.date_added_text, text=date_added)
         self.canvas.itemconfig(self.stock_text, text=stock)
         self.canvas.itemconfig(self.price_text, text=price)
+
+    def get_isbn(self):
+        text_to_return = self.isbn
+        return text_to_return
+
+    def get_edit_button(self):
+        return self.edit_book_button
+
+    def get_delete_button(self):
+        return self.delete_book_button

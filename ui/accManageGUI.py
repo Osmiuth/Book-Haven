@@ -277,9 +277,6 @@ def acc_management_gui_start(root):
         height=22.0
     )
 
-    def set_name(first_name, last_name):
-        canvas.itemconfigure(name, text=last_name + "\n" + first_name)
-
     acc_management_gui.image_image_1 = image_image_1
     acc_management_gui.image_image_2 = image_image_2
     acc_management_gui.image_image_3 = image_image_3
@@ -304,6 +301,5 @@ def acc_management_gui_start(root):
     acc_management_gui.add_books_button = add_books_button
     acc_management_gui.edit_user_profile_button = edit_user_profile_button
 
-    acc_management_gui.set_name = set_name
 
     return acc_management_gui
