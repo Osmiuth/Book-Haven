@@ -1,5 +1,8 @@
 from pathlib import Path
 from tkinter import Canvas, Entry, PhotoImage, Frame, Button
+
+from customtkinter import CTkScrollableFrame
+
 import ui.uiManager as uiManager
 import ui.bookDisplayInfoWidget as bookDisplayInfoWidget
 from datetime import datetime
@@ -132,14 +135,6 @@ def dashboard_gui_start(root):
         y=166.15625,
     )
 
-    notification_image = PhotoImage(
-        file=relative_to_assets("image_7.png"))
-    image_7 = canvas.create_image(
-        908.4921875,
-        27.84375,
-        image=notification_image
-    )
-
     header_image = PhotoImage(
         file=relative_to_assets("image_8.png"))
     image_8 = canvas.create_image(
@@ -227,13 +222,14 @@ def dashboard_gui_start(root):
     search_entry.bind("<FocusIn>", lambda x: uiManager.on_entry_focus_in(search_entry, "Search Books"))
     search_entry.bind("<FocusOut>", lambda x: uiManager.on_entry_focus_out(search_entry, "Search Books"))
 
-    book_list_frame = Frame(
+    book_list_frame = CTkScrollableFrame(
         dashboard_gui,
-        width=700,
-        height=399,
-        borderwidth=1,
-        bg="#FFFFFF",
+        width=675,
+        height=375,
+        border_width=0,
+        fg_color="white",
     )
+
     book_list_frame.place(
         x=211,
         y=245
@@ -248,7 +244,6 @@ def dashboard_gui_start(root):
             date_added=date_added,
             stock=stock,
             price=price,
-
         )
         book.grid(row=i, column=j, padx=10, pady=10)
 
@@ -268,7 +263,7 @@ def dashboard_gui_start(root):
     dashboard_gui.edit_profile_image = edit_profile_image
     dashboard_gui.dashboard_image = dashboard_image
     dashboard_gui.book_management_image = book_management_image
-    dashboard_gui.notification_image = notification_image
+    dashboard_gui.notification_image = dashboard_image
     dashboard_gui.header_image = header_image
     dashboard_gui.graduation_image = graduation_image
     dashboard_gui.backpack_image = backpack_image

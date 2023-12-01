@@ -1,5 +1,8 @@
 from tkinter import Button, Tk, Text
 
+import customtkinter
+from customtkinter import CTk
+
 import addBook
 import ui.loginGUI as loginGUI
 import ui.dashboardGUI as dashboardGUI
@@ -12,7 +15,8 @@ import ctypes
 from datetime import datetime
 
 
-root = Tk()
+root = CTk()
+customtkinter.deactivate_automatic_dpi_awareness()
 root.geometry("937x667")
 root.configure(bg="red")
 root.resizable(False, False)
@@ -232,16 +236,6 @@ def search_by_book_name(search_term):
 
 
 def check_character_limit(user_input, limit=44):
-    """
-    Check if the length of user input is within the specified limit.
-
-    Parameters:
-    - user_input (str): The input string to be checked.
-    - limit (int): The character limit. Default is 44.
-
-    Returns:
-    - bool: True if the length is within the limit, False otherwise.
-    """
     return len(user_input) <= limit
 
 

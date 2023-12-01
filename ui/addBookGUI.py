@@ -24,12 +24,22 @@ def add_book_gui_start(root):
     )
 
     canvas.pack()
-    image_image_1 = PhotoImage(
-        file=relative_to_assets("image_1.png"))
-    image_1 = canvas.create_image(
-        908.4921875,
-        27.84375,
-        image=image_image_1
+    upper_image = PhotoImage(
+        file=relative_to_assets("upper_image.png"))
+    upper_rectangle = canvas.create_image(
+        555.0,
+        36.0,
+        image=upper_image
+    )
+
+    canvas.create_text(
+        485.0,
+        25.0,
+        anchor="nw",
+        justify="center",
+        text="BOOK MANAGEMENT",
+        fill="#FFFFFF",
+        font=("Poppins SemiBold", 14 * -1)
     )
 
     image_image_2 = PhotoImage(
@@ -399,7 +409,7 @@ def add_book_gui_start(root):
     )
 
 
-    add_book_gui.image_image_1 = image_image_1
+    add_book_gui.image_image_1 = upper_image
     add_book_gui.image_image_2 = image_image_2
     add_book_gui.submit_button_image = submit_button_image
     add_book_gui.image_image_3 = image_image_3
