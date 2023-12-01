@@ -1,5 +1,6 @@
 import pyrebase
 import firebase_admin
+import ui.dashboardGUI as dashboardGUI
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
@@ -26,7 +27,6 @@ ref = db.reference('Manager')
 
 firebase = pyrebase.initialize_app(firebaseConfig)
 db = firebase.database()
-print(ref.get())
 
 
 def edit_settings(new_username, new_password):
