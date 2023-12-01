@@ -47,14 +47,17 @@ add_submit_button = add_books_page.submit_button
 db_button1 = dashboard_page.dashboard_button
 edit_settings_button1 = dashboard_page.edit_user_profile_button
 add_books_button1 = dashboard_page.add_books_button
+logout1 = dashboard_page.logout_button
 
 db_button2 = add_books_page.dashboard_button
 edit_settings_button2 = add_books_page.edit_user_profile_button
 add_books_button2 = add_books_page.add_books_button
+logout2 = add_books_page.logout_button
 
 db_button3 = acc_management_page.dashboard_button
 edit_settings_button3 = acc_management_page.edit_user_profile_button
 add_books_button3 = acc_management_page.add_books_button
+logout3 = acc_management_page.logout_button
 name_text = acc_management_page.name
 
 book_list_canvas = dashboard_page.book_list_canvas
@@ -136,6 +139,10 @@ def reset_entries():
     add_books_page.book_description_entry.delete("0.0", "end")
     add_books_page.stock_entry.delete("0.0", "end")
 
+
+def reset_login_entries():
+    login_page.username_entry.delete(0, "end")
+    login_page.password_entry.delete(0, "end")
 
 def on_button_click_add_books(isbn=None):
     print("Settings updated successfully")
@@ -269,19 +276,33 @@ def check_character_limit(user_input, limit=44):
     return len(user_input) <= limit
 
 
+def logout():
+    k = ctypes.windll.user32.MessageBoxW(0, "Do you want to logout?", "System Message", 1)
+    if k == 1:
+        reset_login_entries()
+        show_frame(login_page)
+        return True
+    else:
+        return False
+
+
+
 submit_button.configure(command=lambda: on_button_click())
 
 db_button1.configure(command=lambda: on_button_click_dashboard())
 add_books_button1.configure(command=lambda: on_button_click_add_books())
 edit_settings_button1.configure(command=lambda: on_button_click_edit_settings())
+logout1.configure(command=lambda: logout())
 
 db_button2.configure(command=lambda: on_button_click_dashboard())
 add_books_button2.configure(command=lambda: on_button_click_add_books())
 edit_settings_button2.configure(command=lambda: on_button_click_edit_settings())
+logout2.configure(command=lambda: logout())
 
 db_button3.configure(command=lambda: on_button_click_dashboard())
 add_books_button3.configure(command=lambda: on_button_click_add_books())
 edit_settings_button3.configure(command=lambda: on_button_click_edit_settings())
+logout3.configure(command=lambda: logout())
 
 search_entry.bind("<Return>", lambda x: search_by_book_name(search_entry.get()))
 
