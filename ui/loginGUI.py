@@ -107,6 +107,7 @@ def login_gui_start(root):
         bd=0,
         bg="#1C1D21",
         fg="white",
+        show="*",
         highlightthickness=0
     )
     password_entry.place(
