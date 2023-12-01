@@ -29,7 +29,7 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
                     ref.child(new_isbn).child("stock").set(new_stock)
                     ctypes.windll.user32.MessageBoxW(0, "Successful!", "Success!", 1)
                 else:
-                    return print('ISBN exists')
+                    return print('mo exists')
         else:
             ref.child(new_isbn).child("bookname").set(new_bookname)
             ref.child(new_isbn).child("author").set(new_author)
