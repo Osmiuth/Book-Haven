@@ -1,5 +1,6 @@
 import pyrebase
 import firebase_admin
+import ui.dashboardGUI as dashboardGUI
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
@@ -30,10 +31,13 @@ db = firebase.database()
 
 def edit_settings(new_username, new_password):
     try:
-
-        ref.child("username").set(new_username)
-        ref.child("password").set(new_password)
-        auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", display_name=new_username, password=new_password)
+        if new_username == '':
+            ref.child("password").set(new_password)
+            auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", password=new_password)
+        else:
+            ref.child("username").set(new_username)
+            ref.child("password").set(new_password)
+            auth.update_user("uyITqqTxJpNjRWxv5e5A0of2Hm23", display_name=new_username, password=new_password)
         return True
     except:
         return False
