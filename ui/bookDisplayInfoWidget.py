@@ -18,18 +18,18 @@ class BookDisplayInfoWidget(Frame):
 
         self.isbn = isbn
 
-        self.canvas = Canvas(
+        self.canvas_of_widget = Canvas(
             self,
             bg = "#FFFFFF",
             height = 146,
-            width = 330,
+            width = 320,
             bd = 0,
             highlightthickness = 0,
             relief = "ridge"
         )
 
-        self.canvas.pack()
-        self.canvas.create_text(
+        self.canvas_of_widget.pack()
+        self.canvas_of_widget.create_text(
             140.0,
             55.0,
             anchor="nw",
@@ -38,7 +38,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins SemiBold", 11 * -1)
         )
 
-        self.canvas.create_text(
+        self.canvas_of_widget.create_text(
             140.0,
             73.0,
             anchor="nw",
@@ -47,7 +47,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins SemiBold", 11 * -1)
         )
 
-        self.book_title_text = self.canvas.create_text(
+        self.book_title_text = self.canvas_of_widget.create_text(
             140.0,
             17.0,
             anchor="nw",  # Set anchor to "w" for wrapping
@@ -57,7 +57,7 @@ class BookDisplayInfoWidget(Frame):
             width=170,  # Set the width of your canvas
         )
 
-        self.author_text = self.canvas.create_text(
+        self.author_text = self.canvas_of_widget.create_text(
             193.7310791015625,
             55.0,
             anchor="nw",
@@ -66,7 +66,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins Regular", 10 * -1)
         )
 
-        self.date_added_text = self.canvas.create_text(
+        self.date_added_text = self.canvas_of_widget.create_text(
             219.7310791015625,
             73.0,
             anchor="nw",
@@ -75,7 +75,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins Regular", 10 * -1)
         )
 
-        self.stock_text = self.canvas.create_text(
+        self.stock_text = self.canvas_of_widget.create_text(
             185.7310791015625,
             91.0,
             anchor="nw",
@@ -84,7 +84,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins Regular", 10 * -1)
         )
 
-        self.price_text = self.canvas.create_text(
+        self.price_text = self.canvas_of_widget.create_text(
             184.7310791015625,
             108.0,
             anchor="nw",
@@ -93,7 +93,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins Regular", 10 * -1)
         )
 
-        self.canvas.create_text(
+        self.canvas_of_widget.create_text(
             140.0,
             91.0,
             anchor="nw",
@@ -102,7 +102,7 @@ class BookDisplayInfoWidget(Frame):
             font=("Poppins SemiBold", 11 * -1)
         )
 
-        self.canvas.create_text(
+        self.canvas_of_widget.create_text(
             140.0,
             108.0,
             anchor="nw",
@@ -146,11 +146,11 @@ class BookDisplayInfoWidget(Frame):
         )
 
         max_width = 200
-        self.canvas.itemconfig(self.book_title_text, text=book_title)
-        self.canvas.itemconfig(self.author_text, text=author)
-        self.canvas.itemconfig(self.date_added_text, text=date_added)
-        self.canvas.itemconfig(self.stock_text, text=stock)
-        self.canvas.itemconfig(self.price_text, text=price)
+        self.canvas_of_widget.itemconfig(self.book_title_text, text=book_title)
+        self.canvas_of_widget.itemconfig(self.author_text, text=author)
+        self.canvas_of_widget.itemconfig(self.date_added_text, text=date_added)
+        self.canvas_of_widget.itemconfig(self.stock_text, text=stock)
+        self.canvas_of_widget.itemconfig(self.price_text, text=price)
 
     def get_isbn(self):
         text_to_return = self.isbn
