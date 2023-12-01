@@ -15,7 +15,7 @@ print(ref.get())
 def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publisher, new_description, new_stock):
     try:
         x = is_child_exists(new_isbn)
-        if x != None:
+        if x:
             y = ctypes.windll.user32.MessageBoxW(0, "Would you like to proceed?", "ISBN duplicate detected!", 1)
             if y == 1:
                 ref.child(new_isbn).child("bookname").set(new_bookname)
@@ -23,7 +23,7 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
                 ref.child(new_isbn).child("isbn").set(new_isbn)
                 ref.child(new_isbn).child("amount").set(new_amount)
                 ref.child(new_isbn).child("genre").set(new_genre)
-                ref.child(new_isbn).child("publisher").set(new_publisher)
+                ref.child(new_isbn).child("publication").set(new_publisher)
                 ref.child(new_isbn).child("description").set(new_description)
                 ref.child(new_isbn).child("stock").set(new_stock)
                 ctypes.windll.user32.MessageBoxW(0, "Successful!", "Success!", 1)
@@ -35,7 +35,7 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
             ref.child(new_isbn).child("isbn").set(new_isbn)
             ref.child(new_isbn).child("amount").set(new_amount)
             ref.child(new_isbn).child("genre").set(new_genre)
-            ref.child(new_isbn).child("publisher").set(new_publisher)
+            ref.child(new_isbn).child("publication").set(new_publisher)
             ref.child(new_isbn).child("description").set(new_description)
             ref.child(new_isbn).child("stock").set(new_stock)
             ctypes.windll.user32.MessageBoxW(0, "Successful!", "Success!", 1)
@@ -47,7 +47,8 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
 def is_child_exists(child_path):
     ref = db.reference("BookManagement").child(child_path)
     snapshot = ref.get()
-    return snapshot is not None
+    print("result: ", snapshot)
+    return snapshot
 
 
 def is_valid_isbn(isbn):

@@ -63,7 +63,7 @@ def show_book_list(dashboard_page, is_searching=False, list_of_books=None):
             isbnnum = book_info.get('isbn', '')
             book_title = book_info.get('bookname', '')
             author = book_info.get('author', '')
-            date_added = book_info.get('publisher', '')
+            date_added = book_info.get('publication', '')
             stock = book_info.get('stock', '')
             price = book_info.get('amount', '')
 
