@@ -2,7 +2,7 @@ from pathlib import Path
 from tkinter import Canvas, Entry, PhotoImage, Frame, Button
 import ui.uiManager as uiManager
 import ui.bookDisplayInfoWidget as bookDisplayInfoWidget
-
+from datetime import datetime
 
 
 ASSETS_PATH = Path(r"ui/assets/dashboard")
@@ -156,14 +156,15 @@ def dashboard_gui_start(root):
         image=graduation_image
     )
 
-    canvas.create_text(
+    date = canvas.create_text(
         244.30859375,
         89.64065551757812,
         anchor="nw",
-        text="September 4,  2023",
+        text="",
         fill="#FFFFFF",
         font=("Poppins Regular", 10 * -1)
     )
+    canvas.itemconfig(date, text=datetime.now().strftime("%B %d, %Y"))
 
     name = canvas.create_text(
         242.0,

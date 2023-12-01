@@ -190,6 +190,15 @@ def on_button_click_add_submit(): #Add-Book-Button
         stock = int(stock)
         print(amount)
         print(stock)
+
+        if not check_character_limit(bookname, 44):
+            ctypes.windll.user32.MessageBoxW(0, "Book name is too long. Please enter a shorter name.", "Error", 1)
+            return
+
+        if not check_character_limit(author, 22):
+            ctypes.windll.user32.MessageBoxW(0, "Author name is too long. Please enter a shorter name.", "Error", 1)
+            return
+
         if not addBook.is_valid_isbn(isbn):
             ctypes.windll.user32.MessageBoxW(0, "Invalid ISBN. Please enter a valid ISBN.", "Error", 1)
             return
@@ -220,6 +229,20 @@ def search_by_book_name(search_term):
     dashboard_page.remove_book_list()
     widget_list = dashboardFunc.show_book_list(dashboard_page, True, result_dict)
     configure_buttons()
+
+
+def check_character_limit(user_input, limit=44):
+    """
+    Check if the length of user input is within the specified limit.
+
+    Parameters:
+    - user_input (str): The input string to be checked.
+    - limit (int): The character limit. Default is 44.
+
+    Returns:
+    - bool: True if the length is within the limit, False otherwise.
+    """
+    return len(user_input) <= limit
 
 
 submit_button.configure(command=lambda: on_button_click())
