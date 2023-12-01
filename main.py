@@ -186,6 +186,9 @@ def on_button_click_add_submit(): #Add-Book-Button
         stock = int(stock)
         print(amount)
         print(stock)
+        if not addBook.is_valid_isbn(isbn):
+            ctypes.windll.user32.MessageBoxW(0, "Invalid ISBN. Please enter a valid ISBN.", "Error", 1)
+            return
     except:
         ctypes.windll.user32.MessageBoxW(0, "Invalid input. Please enter a valid value.", "Error", 1)
 

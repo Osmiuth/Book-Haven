@@ -43,8 +43,40 @@ def add_book(new_bookname, new_author, new_isbn, new_amount, new_genre, new_publ
     except:
         return False
 
+
 def is_child_exists(child_path):
     ref = db.reference("BookManagement").child(child_path)
     snapshot = ref.get()
     return snapshot is not None
 
+
+def is_valid_isbn(isbn):
+    # Remove any dashes or spaces from the input
+    isbn = isbn.replace('-', '').replace(' ', '')
+
+    # Check if the length is either 10 or 13
+    if len(isbn) not in [10, 13]:
+        return False
+
+    # Check if the first digits are numeric
+    if not isbn[:-1].isdigit():
+        return False
+
+    # Check the last digit
+    if len(isbn) == 10:
+        if not (isbn[-1].isdigit() or isbn[-1].upper() == 'X'):
+            return False
+        # Calculate and check the ISBN-10 checksum
+        checksum = sum(int(digit) * (10 - index) for index, digit in enumerate(isbn[:-1]))
+        checksum = (11 - (checksum % 11)) % 11
+        if isbn[-1].upper() == 'X':
+            return checksum == 10
+        else:
+            return checksum == int(isbn[-1])
+    elif len(isbn) == 13:
+        if not isbn.isdigit():
+            return False
+        # Calculate and check the ISBN-13 checksum
+        checksum = sum(int(digit) * (1 if index % 2 == 0 else 3) for index, digit in enumerate(isbn[:-1]))
+        checksum = (10 - (checksum % 10)) % 10
+        return checksum == int(isbn[-1])
